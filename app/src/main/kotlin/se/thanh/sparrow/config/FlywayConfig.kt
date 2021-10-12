@@ -21,5 +21,4 @@ class FlywayConfig(private val env: Environment) {
         )
     )
   }
-
 }

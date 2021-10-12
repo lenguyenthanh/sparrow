@@ -34,7 +34,7 @@ class TestContainerInitializer : ApplicationContextInitializer<ConfigurableAppli
 
     env.propertySources.addFirst(testContainers)
 
-    val flyway = Flyway.configure().dataSource(container.jdbcUrl, container.username, container.password).load();
+    val flyway = Flyway.configure().dataSource(container.jdbcUrl, container.username, container.password).load()
     flyway.migrate()
 
     println(env.getRequiredProperty("spring.r2dbc.name"))
@@ -53,9 +53,8 @@ class TestContainerInitializer : ApplicationContextInitializer<ConfigurableAppli
       }
 
       override fun stop() {
-        //do nothing jvm handles it
+        // do nothing jvm handles it
       }
     }
   }
 }
-

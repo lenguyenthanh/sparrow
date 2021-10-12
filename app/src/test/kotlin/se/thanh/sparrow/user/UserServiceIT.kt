@@ -1,13 +1,11 @@
 package se.thanh.sparrow.user
 
-import io.r2dbc.spi.ConnectionFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
-import org.flywaydb.core.Flyway
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
@@ -15,13 +13,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestMethodOrder
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.SpringBootConfiguration
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.core.io.DefaultResourceLoader
-import org.springframework.core.io.ResourceLoader
-import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import reactor.kotlin.core.publisher.toFlux
@@ -57,7 +49,7 @@ internal class UserServiceIT(
   @Test
   fun `findById returns a value`() {
     runBlocking {
-      //get user1 id
+      // get user1 id
       val dbUser = service.findByEmail("user1@users.com").first()
       val resp = service.findById(dbUser.id!!)
       assertThat(resp).isNotNull
