@@ -1,5 +1,6 @@
 package se.thanh.sparrow
 
+import org.flywaydb.core.Flyway
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.core.env.MapPropertySource
@@ -32,6 +33,9 @@ class TestContainerInitializer : ApplicationContextInitializer<ConfigurableAppli
     val testContainers = MapPropertySource("testcontainers", conf)
 
     env.propertySources.addFirst(testContainers)
+
+    val flyway = Flyway.configure().dataSource(container.jdbcUrl, container.username, container.password).load();
+    flyway.migrate()
 
     println(env.getRequiredProperty("spring.r2dbc.name"))
   }

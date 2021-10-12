@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
+import org.flywaydb.core.Flyway
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
@@ -14,7 +15,10 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestMethodOrder
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.SpringBootConfiguration
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.core.io.DefaultResourceLoader
 import org.springframework.core.io.ResourceLoader
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator
@@ -28,24 +32,12 @@ import java.util.stream.Stream
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @DataR2dbcTest
-// @ContextConfiguration(initializers = [TestContainerInitializer::class], classes = [FlywayConfig::class])
 @ContextConfiguration(initializers = [TestContainerInitializer::class])
 @ActiveProfiles("test-containers")
 internal class UserServiceIT(
-  @Autowired private val connectionFactory: ConnectionFactory,
-  // @Autowired private val flyway: Flyway,
   @Autowired private val repo: UserRepository
 ) {
   private lateinit var service: UserService
-
-  init {
-    val resourceLoader: ResourceLoader = DefaultResourceLoader()
-    val scripts = arrayOf(
-      resourceLoader.getResource("classpath:db/schema.sql"),
-      resourceLoader.getResource("classpath:db/data.sql")
-    )
-    ResourceDatabasePopulator(*scripts).populate(connectionFactory).block()
-  }
 
   @BeforeAll
   fun beforeAll() {
