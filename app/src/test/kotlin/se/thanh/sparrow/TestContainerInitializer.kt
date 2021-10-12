@@ -16,11 +16,12 @@ class TestContainerInitializer : ApplicationContextInitializer<ConfigurableAppli
       .withPassword("test")
       .withUsername("test")
 
-    container.start()
+    container.startContainers()
 
     val env = applicationContext.environment
     val conf = mapOf(
       "spring.r2dbc.url" to container.r2dbcUrl(),
+      "spring.r2dbc.username" to container.username,
       "spring.r2dbc.name" to container.username,
       "spring.r2dbc.password" to container.password,
       "spring.flyway.url" to container.jdbcUrl,
@@ -32,8 +33,7 @@ class TestContainerInitializer : ApplicationContextInitializer<ConfigurableAppli
 
     env.propertySources.addFirst(testContainers)
 
-    // applicationContext.refresh()
-    // val f = applicationContext.getBean("flyway")
+    println(env.getRequiredProperty("spring.r2dbc.name"))
   }
 
   companion object {

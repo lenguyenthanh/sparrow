@@ -21,10 +21,10 @@ class AppConfiguration {
     endpoints()
   )
 
-  // @Bean
-  // fun initializer(connectionFactory: ConnectionFactory): ConnectionFactoryInitializer {
-  //   val initializer = ConnectionFactoryInitializer()
-  //   initializer.setConnectionFactory(connectionFactory)
-  //   return initializer
-  // }
+  @Bean
+  fun initializer(connectionFactory: ConnectionFactory): ConnectionFactoryInitializer {
+    val initializer = ConnectionFactoryInitializer()
+    initializer.setConnectionFactory(connectionFactory)
+    return initializer
+  }
 }

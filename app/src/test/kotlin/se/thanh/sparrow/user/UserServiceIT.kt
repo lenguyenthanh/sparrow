@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
-import org.flywaydb.core.Flyway
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
@@ -22,9 +21,7 @@ import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import reactor.kotlin.core.publisher.toFlux
-import se.thanh.sparrow.App
 import se.thanh.sparrow.TestContainerInitializer
-import se.thanh.sparrow.config.FlywayConfig
 import java.util.stream.Stream
 
 @ExperimentalCoroutinesApi
