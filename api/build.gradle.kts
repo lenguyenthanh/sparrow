@@ -6,3 +6,7 @@ dependencies {
     implementation(Libs.kotlinStdlib)
     implementation(Libs.kotlinxCoroutines)
 }
+
+kotlin {
+  explicitApi()
+}

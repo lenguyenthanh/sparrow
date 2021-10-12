@@ -8,12 +8,6 @@ plugins {
 }
 
 
-repositories {
-  mavenCentral()
-  maven { url = uri("https://jitpack.io") }
-  // maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
-}
-
 allprojects {
   apply(plugin = "org.jetbrains.kotlin.jvm")
   apply(plugin = Plugins.ktlint)
@@ -24,9 +18,7 @@ allprojects {
 
   repositories {
     mavenCentral()
-    maven { url = uri("https://repo.spring.io/milestone") }
     maven { url = uri("https://jitpack.io") }
-    maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
   }
 
   // Common dependencies
@@ -35,15 +27,15 @@ allprojects {
     implementation(Libs.arrowCore)
     implementation(Libs.arrowEndpointCore)
     implementation(Libs.kotlinxSerializationJson)
-    testImplementation(Libs.kotestRunner)
-    testImplementation(Libs.kotestAssertions)
-    testImplementation(Libs.kotestProperty)
+    // testImplementation(Libs.kotestRunner)
+    // testImplementation(Libs.kotestAssertions)
+    // testImplementation(Libs.kotestProperty)
 
   }
 
   tasks.withType<KotlinCompile> {
     kotlinOptions {
-      jvmTarget = "1.8"
+      jvmTarget = "15"
       freeCompilerArgs = listOf("-Xjsr305=strict")
     }
   }
@@ -58,7 +50,4 @@ allprojects {
     }
   }
 
-  kotlin {
-    explicitApi()
-  }
 }

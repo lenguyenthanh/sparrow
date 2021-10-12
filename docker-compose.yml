@@ -1,0 +1,18 @@
+# docker-compose.yml
+
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:14.0-alpine3.14
+    volumes:
+      - ./containers_data/postgres:/var/lib/postgresql/data
+    container_name: sparrow_db
+    environment:
+      POSTGRES_DB: sparrow
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: dummy
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
