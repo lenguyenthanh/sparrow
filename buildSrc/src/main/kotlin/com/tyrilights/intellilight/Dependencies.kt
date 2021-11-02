@@ -1,6 +1,6 @@
 object Version {
   const val kotlin: String = "1.5.31"
-  const val arrow: String = "1.0.0"
+  const val arrow: String = "1.0.1"
   const val arrowEndpoint: String = "6f337d82e1"
 
   const val kotlinx: String = "1.5.2"
@@ -16,7 +16,7 @@ object Version {
   const val postgres = "42.2.24"
   const val flyway = "8.0.0"
 
-  const val kotest: String = "5.0.0-M1"
+  const val kotest: String = "5.0.0.M3"
   const val kotestSpring: String = "1.0.1"
   const val mockk: String = "1.12.0"
   const val testcontainers: String = "1.16.0"

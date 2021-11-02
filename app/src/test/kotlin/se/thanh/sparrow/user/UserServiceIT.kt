@@ -2,8 +2,7 @@ package se.thanh.sparrow.user
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeAll
@@ -16,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
-import reactor.kotlin.core.publisher.toFlux
 import se.thanh.sparrow.TestContainerInitializer
-import java.util.stream.Stream
 
 @ExperimentalCoroutinesApi
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -33,7 +30,9 @@ internal class UserServiceIT(
 
   @BeforeAll
   fun beforeAll() {
-    initDatabase()
+    runBlocking {
+      initDatabase()
+    }
     service = UserService(repo)
   }
 
@@ -50,8 +49,8 @@ internal class UserServiceIT(
   fun `findById returns a value`() {
     runBlocking {
       // get user1 id
-      val dbUser = service.findByEmail("user1@users.com").first()
-      val resp = service.findById(dbUser.id!!)
+      val dbUser = service.findByEmail("user1@users.com")
+      val resp = service.findById(dbUser!!.id!!)
       assertThat(resp).isNotNull
       assertThat(resp?.name).isEqualTo("User1")
     }
@@ -69,10 +68,7 @@ internal class UserServiceIT(
   fun `findByEmail returns a value`() {
     runBlocking {
       val resp = service.findByEmail("user2@users.com")
-      assertThat(resp.count()).isEqualTo(1)
-      resp.map {
-        assertThat(it.name).isEqualTo("User2")
-      }
+      assertThat(resp!!.name).isEqualTo("User2")
     }
   }
 
@@ -80,7 +76,7 @@ internal class UserServiceIT(
   fun `findByEmail returns a null if email does not exists`() {
     runBlocking {
       val resp = service.findByEmail("unknown@users.com")
-      assertThat(resp.count()).isEqualTo(0)
+      assertThat(resp).isNull()
     }
   }
 
@@ -93,15 +89,14 @@ internal class UserServiceIT(
     }
   }
 
-  private fun initDatabase() {
-    repo.deleteAll().subscribe()
+  private suspend fun initDatabase() {
+    repo.deleteAll()
 
-    val initData = Stream.of(
+    val initData = listOf(
       User(null, "User1", "user01", "user1@users.com"),
       User(null, "User2", "user02", "user2@users.com"),
       User(null, "User3", "user03", "user3@users.com")
     )
-    val saveAll = repo.saveAll(initData.toFlux())
-    saveAll.subscribe()
+    val saveAll = repo.saveAll(initData).toList()
   }
 }
