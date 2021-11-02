@@ -20,5 +20,4 @@ value class Token(val value: String) {
   }
 }
 
-
 val authorizationHeader = ArrowEndpoint.header("Authorization", Codec.listFirstOrNull(Token.plainCodec))
