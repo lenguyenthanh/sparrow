@@ -1,6 +1,6 @@
 object Version {
   const val kotlin: String = "1.5.31"
-  const val arrow: String = "1.0.0"
+  const val arrow: String = "1.0.1"
   const val arrowEndpoint: String = "6f337d82e1"
 
   const val kotlinx: String = "1.5.2"
@@ -11,8 +11,17 @@ object Version {
   const val springBoot: String = "2.5.5"
   const val springDependency: String = "1.0.11.RELEASE"
 
-  const val kotest: String = "5.0.0-M2"
+  const val r2dbcPostgres = "0.8.10.RELEASE"
+  const val r2dbcPool = "0.9.0.M2"
+  const val postgres = "42.2.24"
+  const val flyway = "8.0.0"
+
+  const val kotest: String = "5.0.0.M3"
+  const val kotestSpring: String = "1.0.1"
   const val mockk: String = "1.12.0"
+  const val testcontainers: String = "1.16.0"
+  const val reactorTest: String = "3.4.10"
+
 }
 
 object Libs {
@@ -36,17 +45,27 @@ object Libs {
     "org.jetbrains.kotlinx:kotlinx-serialization-json:${Version.kotlinxSerializationJson}"
 
   const val springActuator: String = "org.springframework.boot:spring-boot-starter-actuator:${Version.springBoot}"
-  const val springDataR2dbc: String = "org.springframework.boot:spring-boot-starter-data-r2dbc:${Version.springBoot}"
   const val springBootStarterWeb: String = "org.springframework.boot:spring-boot-starter-web:${Version.springBoot}"
   const val springBootStarterWebflux: String =
     "org.springframework.boot:spring-boot-starter-webflux:${Version.springBoot}"
   const val reactorKotlinExtensions: String =
     "io.projectreactor.kotlin:reactor-kotlin-extensions:${Version.reactorKotlinExtensions}"
 
+  const val springDataR2dbc: String = "org.springframework.boot:spring-boot-starter-data-r2dbc:${Version.springBoot}"
+  const val r2dbcPool: String = "io.r2dbc:r2dbc-pool:${Version.r2dbcPool}"
+  const val r2dbcPostgres: String = "io.r2dbc:r2dbc-postgresql:${Version.r2dbcPostgres}"
+  const val postgres: String = "org.postgresql:postgresql:${Version.postgres}"
+  const val flyway: String = "org.flywaydb:flyway-core:${Version.flyway}"
+
   const val kotestRunner: String = "io.kotest:kotest-runner-junit5:${Version.kotest}"
   const val kotestAssertions: String = "io.kotest:kotest-assertions-core:${Version.kotest}"
   const val kotestProperty: String = "io.kotest:kotest-property:${Version.kotest}"
+  const val kotestSpring: String = "io.kotest.extensions:kotest-extensions-spring:${Version.kotestSpring}"
+
+  const val springBootTest: String = "org.springframework.boot:spring-boot-starter-test:${Version.springBoot}"
+  const val reactorTest: String = "io.projectreactor:reactor-test:${Version.reactorTest}"
   const val mockk: String = "io.mockk:mockk:${Version.mockk}"
+  const val testContainer: String = "org.testcontainers:postgresql:${Version.testcontainers}"
 }
 
 object Plugins {
