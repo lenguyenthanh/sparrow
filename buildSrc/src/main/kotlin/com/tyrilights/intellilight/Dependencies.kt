@@ -22,6 +22,7 @@ object Version {
   const val testcontainers: String = "1.16.0"
   const val reactorTest: String = "3.4.10"
 
+  const val kover = "0.4.1"
 }
 
 object Libs {
@@ -74,4 +75,5 @@ object Plugins {
   const val kotlinSpring: String = "plugin.spring"
   const val springBoot: String = "org.springframework.boot"
   const val springDependency: String = "io.spring.dependency-management"
+  const val kover: String = "org.jetbrains.kotlinx.kover"
 }
