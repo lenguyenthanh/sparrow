@@ -1,5 +1,5 @@
 object Version {
-  const val kotlin: String = "1.5.31"
+  const val kotlin: String = "1.6.0"
   const val arrow: String = "1.0.1"
   const val arrowEndpoint: String = "6f337d82e1"
 
@@ -8,7 +8,7 @@ object Version {
 
   const val kotlinxSerializationJson: String = "1.3.0"
   const val ktlint: String = "10.1.0"
-  const val springBoot: String = "2.5.5"
+  const val springBoot: String = "2.5.7"
   const val springDependency: String = "1.0.11.RELEASE"
 
   const val r2dbcPostgres = "0.8.10.RELEASE"
