@@ -5,7 +5,6 @@ plugins {
   kotlin("jvm") version Version.kotlin apply false
   id(Plugins.kotlinSerialization) version Version.kotlin apply false
   id(Plugins.ktlint) version Version.ktlint apply true
-  id(Plugins.kover) version Version.kover apply true
 }
 
 
@@ -36,20 +35,13 @@ allprojects {
 
   tasks.withType<KotlinCompile> {
     kotlinOptions {
-      jvmTarget = "11"
+      jvmTarget = "17"
       freeCompilerArgs = listOf("-Xjsr305=strict")
     }
   }
 
   tasks.withType<Test> {
     useJUnitPlatform()
-  }
-
-  tasks.test {
-    extensions.configure(kotlinx.kover.api.KoverTaskExtension::class) {
-      isEnabled = true
-      binaryReportFile.set(file("$buildDir/custom/result.bin"))
-    }
   }
 
   ktlint {
