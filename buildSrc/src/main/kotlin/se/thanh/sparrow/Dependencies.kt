@@ -1,14 +1,14 @@
 object Version {
-  const val kotlin: String = "1.6.0"
+  const val kotlin: String = "1.6.10"
   const val arrow: String = "1.0.1"
   const val arrowEndpoint: String = "6f337d82e1"
 
-  const val kotlinx: String = "1.5.2"
+  const val kotlinx: String = "1.6.0"
   const val reactorKotlinExtensions: String = "1.1.3"
 
   const val kotlinxSerializationJson: String = "1.3.0"
   const val ktlint: String = "10.1.0"
-  const val springBoot: String = "2.5.7"
+  const val springBoot: String = "2.6.2"
   const val springDependency: String = "1.0.11.RELEASE"
 
   const val r2dbcPostgres = "0.8.10.RELEASE"
@@ -16,13 +16,13 @@ object Version {
   const val postgres = "42.2.24"
   const val flyway = "8.0.0"
 
-  const val kotest: String = "5.0.0.M3"
+  const val kotest: String = "5.0.2"
   const val kotestSpring: String = "1.0.1"
   const val mockk: String = "1.12.0"
   const val testcontainers: String = "1.16.0"
   const val reactorTest: String = "3.4.10"
 
-  const val kover = "0.4.1"
+  const val kover = "0.5.0-RC"
 }
 
 object Libs {
