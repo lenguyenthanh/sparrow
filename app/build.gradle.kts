@@ -3,7 +3,6 @@ plugins {
   id(Plugins.springDependency) version Version.springDependency
   kotlin(Plugins.kotlinSpring) version Version.kotlin
   id("application")
-  id(Plugins.kover) version Version.kover
 }
 
 dependencies {
@@ -38,7 +37,7 @@ tasks.koverVerify {
     rule {
         name = "Minimal line coverage rate in percent"
         bound {
-            minValue = 74
+            minValue = 40
        }
     }
 }
