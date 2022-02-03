@@ -22,7 +22,7 @@ object Version {
   const val testcontainers: String = "1.16.0"
   const val reactorTest: String = "3.4.10"
 
-  const val kover = "0.5.0-RC2"
+  const val kover = "0.5.0"
 }
 
 object Libs {
