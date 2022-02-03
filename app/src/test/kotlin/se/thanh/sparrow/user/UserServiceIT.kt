@@ -85,7 +85,7 @@ internal class UserServiceIT(
     runBlocking {
       // add a new user
       val resp = service.deleteOne(9999)
-      assertThat(resp).isFalse()
+      assertThat(resp).isFalse
     }
   }
 
