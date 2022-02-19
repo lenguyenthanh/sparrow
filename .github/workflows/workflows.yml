@@ -11,12 +11,23 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: setup jdk
+        uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
       - name: test
         run: ./gradlew check
+
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: setup jdk
+        uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
       - name: build the app
         run: ./gradlew build
